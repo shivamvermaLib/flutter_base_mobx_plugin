@@ -1,0 +1,29 @@
+name: flutter_base_mobx_plugin
+description: A new flutter plugin project.
+version: 0.0.1
+author:
+homepage:
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+    
+  mobx: ^1.1.1
+  flutter_mobx: ^1.1.0
+  json_annotation: ^3.0.1
+  provider: ^4.1.1
+  page_transition: ^1.1.5
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mobx_codegen: ^1.0.3
+  build_runner: ^1.9.0
+  json_serializable: ^3.3.0
+  intl_translation: ^0.17.9
