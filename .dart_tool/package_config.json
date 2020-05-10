@@ -134,6 +134,42 @@
       "languageVersion": "2.7"
     },
     {
+      "name": "date_format",
+      "rootUri": "file:///Users/shivamverma/Documents/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/date_format-1.0.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "firebase",
+      "rootUri": "file:///Users/shivamverma/Documents/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase-7.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
+      "name": "firebase_core",
+      "rootUri": "file:///Users/shivamverma/Documents/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.4.4+3",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "firebase_core_platform_interface",
+      "rootUri": "file:///Users/shivamverma/Documents/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_platform_interface-1.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "firebase_core_web",
+      "rootUri": "file:///Users/shivamverma/Documents/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-0.1.1+2",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "firebase_database",
+      "rootUri": "file:///Users/shivamverma/Documents/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_database-3.1.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "fixnum",
       "rootUri": "file:///Users/shivamverma/Documents/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/fixnum-0.10.11",
       "packageUri": "lib/",
@@ -164,6 +200,12 @@
       "languageVersion": "2.2"
     },
     {
+      "name": "flutter_web_plugins",
+      "rootUri": "file:///Users/shivamverma/Documents/Flutter/flutter/packages/flutter_web_plugins",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "glob",
       "rootUri": "file:///Users/shivamverma/Documents/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/glob-1.2.0",
       "packageUri": "lib/",
@@ -180,6 +222,12 @@
       "rootUri": "file:///Users/shivamverma/Documents/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/html-0.14.0+3",
       "packageUri": "lib/",
       "languageVersion": "2.3"
+    },
+    {
+      "name": "http",
+      "rootUri": "file:///Users/shivamverma/Documents/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.4"
     },
     {
       "name": "http_multi_server",
@@ -272,12 +320,6 @@
       "languageVersion": "2.7"
     },
     {
-      "name": "nested",
-      "rootUri": "file:///Users/shivamverma/Documents/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/nested-0.0.4",
-      "packageUri": "lib/",
-      "languageVersion": "2.2"
-    },
-    {
       "name": "node_interop",
       "rootUri": "file:///Users/shivamverma/Documents/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/node_interop-1.0.3",
       "packageUri": "lib/",
@@ -320,16 +362,16 @@
       "languageVersion": "2.4"
     },
     {
+      "name": "plugin_platform_interface",
+      "rootUri": "file:///Users/shivamverma/Documents/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "pool",
       "rootUri": "file:///Users/shivamverma/Documents/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/pool-1.4.0",
       "packageUri": "lib/",
       "languageVersion": "2.0"
-    },
-    {
-      "name": "provider",
-      "rootUri": "file:///Users/shivamverma/Documents/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/provider-4.1.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.7"
     },
     {
       "name": "pub_semver",
@@ -464,7 +506,11 @@
       "languageVersion": "2.7"
     }
   ],
+<<<<<<< HEAD
   "generated": "2020-05-10T17:21:10.195164Z",
+=======
+  "generated": "2020-05-10T15:12:28.702463Z",
+>>>>>>> 3def73feaf2155dbc7ccd3ac0e1233a9f6e63fad
   "generator": "pub",
   "generatorVersion": "2.8.1"
 }
