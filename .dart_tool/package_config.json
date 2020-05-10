@@ -506,11 +506,7 @@
       "languageVersion": "2.7"
     }
   ],
-<<<<<<< HEAD
-  "generated": "2020-05-10T17:21:10.195164Z",
-=======
-  "generated": "2020-05-10T15:12:28.702463Z",
->>>>>>> 3def73feaf2155dbc7ccd3ac0e1233a9f6e63fad
+  "generated": "2020-05-10T17:28:09.754433Z",
   "generator": "pub",
   "generatorVersion": "2.8.1"
 }
