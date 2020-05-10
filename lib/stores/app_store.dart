@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_mobx_plugin/stores/base_screen_store.dart';
 
-class AppStore {
+import 'package:mobx/mobx.dart';
+part 'app_store.g.dart';
+
+class NavigationStore = _NavigationStore with _$NavigationStore;
+
+abstract class _NavigationStore with Store {
   final GlobalKey<NavigatorState> navigatorKey =
       new GlobalKey<NavigatorState>();
-
-  BaseScreenStore baseScreenStore;
 
   dynamic navigateTo(String path, {isReplace = false, dynamic data}) async {
     if (isReplace) {
