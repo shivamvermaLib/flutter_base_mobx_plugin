@@ -15,15 +15,12 @@ abstract class _FirebaseDataStoreBase<T extends FirebaseData>
     implements DataStore<T> {
   final JsonFactory jsonFactory;
   final DatabaseReference databaseReference;
-  final AppStore _appStore;
-
   StreamSubscription<Event> subscriptionChildAdded,
       subscriptionChildChanged,
       subscriptionChildRemoved,
       subscriptionChildMoved;
 
-  _FirebaseDataStoreBase(
-      this.databaseReference, this.jsonFactory, this._appStore) {
+  _FirebaseDataStoreBase(this.databaseReference, this.jsonFactory) {
     subscriptionChildAdded = databaseReference.onChildAdded.listen((event) {
       int index = 0;
       if (event.previousSiblingKey != null) {
@@ -198,9 +195,6 @@ abstract class _FirebaseDataStoreBase<T extends FirebaseData>
     await subscriptionChildMoved.cancel();
     await subscriptionChildRemoved.cancel();
   }
-
-  @override
-  AppStore get appStore => _appStore;
 }
 
 abstract class DataStore<T> {
@@ -209,7 +203,6 @@ abstract class DataStore<T> {
   Future<T> addUpdateItem(T t);
   List<T> searchListItems(bool Function(T) check);
   void dispose();
-  AppStore get appStore;
 }
 
 typedef T JsonFactory<T>(Map<String, dynamic> json);

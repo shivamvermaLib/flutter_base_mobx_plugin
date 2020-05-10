@@ -1,0 +1,130 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'theme_store.dart';
+
+// **************************************************************************
+// StoreGenerator
+// **************************************************************************
+
+// ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+
+mixin _$ThemeStore on _ThemeStore, Store {
+  Computed<ThemeData> _$themeDataComputed;
+
+  @override
+  ThemeData get themeData =>
+      (_$themeDataComputed ??= Computed<ThemeData>(() => super.themeData))
+          .value;
+
+  final _$primaryColorAtom = Atom(name: '_ThemeStore.primaryColor');
+
+  @override
+  Color get primaryColor {
+    _$primaryColorAtom.context.enforceReadPolicy(_$primaryColorAtom);
+    _$primaryColorAtom.reportObserved();
+    return super.primaryColor;
+  }
+
+  @override
+  set primaryColor(Color value) {
+    _$primaryColorAtom.context.conditionallyRunInAction(() {
+      super.primaryColor = value;
+      _$primaryColorAtom.reportChanged();
+    }, _$primaryColorAtom, name: '${_$primaryColorAtom.name}_set');
+  }
+
+  final _$primaryDarkColorAtom = Atom(name: '_ThemeStore.primaryDarkColor');
+
+  @override
+  Color get primaryDarkColor {
+    _$primaryDarkColorAtom.context.enforceReadPolicy(_$primaryDarkColorAtom);
+    _$primaryDarkColorAtom.reportObserved();
+    return super.primaryDarkColor;
+  }
+
+  @override
+  set primaryDarkColor(Color value) {
+    _$primaryDarkColorAtom.context.conditionallyRunInAction(() {
+      super.primaryDarkColor = value;
+      _$primaryDarkColorAtom.reportChanged();
+    }, _$primaryDarkColorAtom, name: '${_$primaryDarkColorAtom.name}_set');
+  }
+
+  final _$accentColorAtom = Atom(name: '_ThemeStore.accentColor');
+
+  @override
+  Color get accentColor {
+    _$accentColorAtom.context.enforceReadPolicy(_$accentColorAtom);
+    _$accentColorAtom.reportObserved();
+    return super.accentColor;
+  }
+
+  @override
+  set accentColor(Color value) {
+    _$accentColorAtom.context.conditionallyRunInAction(() {
+      super.accentColor = value;
+      _$accentColorAtom.reportChanged();
+    }, _$accentColorAtom, name: '${_$accentColorAtom.name}_set');
+  }
+
+  final _$backgroundColorAtom = Atom(name: '_ThemeStore.backgroundColor');
+
+  @override
+  Color get backgroundColor {
+    _$backgroundColorAtom.context.enforceReadPolicy(_$backgroundColorAtom);
+    _$backgroundColorAtom.reportObserved();
+    return super.backgroundColor;
+  }
+
+  @override
+  set backgroundColor(Color value) {
+    _$backgroundColorAtom.context.conditionallyRunInAction(() {
+      super.backgroundColor = value;
+      _$backgroundColorAtom.reportChanged();
+    }, _$backgroundColorAtom, name: '${_$backgroundColorAtom.name}_set');
+  }
+
+  final _$statusBarColorAtom = Atom(name: '_ThemeStore.statusBarColor');
+
+  @override
+  Color get statusBarColor {
+    _$statusBarColorAtom.context.enforceReadPolicy(_$statusBarColorAtom);
+    _$statusBarColorAtom.reportObserved();
+    return super.statusBarColor;
+  }
+
+  @override
+  set statusBarColor(Color value) {
+    _$statusBarColorAtom.context.conditionallyRunInAction(() {
+      super.statusBarColor = value;
+      _$statusBarColorAtom.reportChanged();
+    }, _$statusBarColorAtom, name: '${_$statusBarColorAtom.name}_set');
+  }
+
+  final _$_ThemeStoreActionController = ActionController(name: '_ThemeStore');
+
+  @override
+  void changeTheme(
+      {Color primaryColor,
+      Color primaryDarkColor,
+      Color accentColor,
+      Color backgroundColor}) {
+    final _$actionInfo = _$_ThemeStoreActionController.startAction();
+    try {
+      return super.changeTheme(
+          primaryColor: primaryColor,
+          primaryDarkColor: primaryDarkColor,
+          accentColor: accentColor,
+          backgroundColor: backgroundColor);
+    } finally {
+      _$_ThemeStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String toString() {
+    final string =
+        'primaryColor: ${primaryColor.toString()},primaryDarkColor: ${primaryDarkColor.toString()},accentColor: ${accentColor.toString()},backgroundColor: ${backgroundColor.toString()},statusBarColor: ${statusBarColor.toString()},themeData: ${themeData.toString()}';
+    return '{$string}';
+  }
+}

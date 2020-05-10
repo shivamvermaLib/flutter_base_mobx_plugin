@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_mobx_plugin/stores/app_store.dart';
-import 'package:flutter_base_mobx_plugin/stores/base_screen_store.dart';
-import 'package:flutter_base_mobx_plugin/stores/theme_store.dart';
+import 'package:flutter_base_mobx_plugin/app/store_provider.dart';
+import 'package:flutter_base_mobx_plugin/stores/basescreen/base_screen_store.dart';
+import 'package:flutter_base_mobx_plugin/stores/theme/theme_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
-import 'package:provider/provider.dart';
 
 abstract class BaseScreen extends StatefulWidget
     implements BaseScreenComponents {
@@ -62,15 +61,13 @@ class _BaseScreenState extends State<BaseScreen> {
   @override
   Widget build(BuildContext context) {
     if (ModalRoute.of(context).isCurrent) {
-      AppStore appStore = context.watch<AppStore>();
-      appStore.baseScreenStore = widget.baseScreenStore;
       widget.addReaction(
           "message",
           reaction((_) => widget.baseScreenStore.message, (message) {
             if (message != null) widget.showMessage(message);
             widget.baseScreenStore.message = null;
           }));
-      ThemeStore themeStore = context.watch<ThemeStore>();
+      ThemeStore themeStore = StoreProvider.of<ThemeStore>(context);
       TextTheme textTheme = Theme.of(context).textTheme;
       return WillPopScope(
           child: Observer(
@@ -84,7 +81,8 @@ class _BaseScreenState extends State<BaseScreen> {
                 floatingActionButton: widget.floatingActionButton(context),
                 floatingActionButtonLocation: widget.floatingActionBarLocation,
                 drawer: widget.drawer(context),
-                backgroundColor: themeStore.themeData.backgroundColor,
+                backgroundColor:
+                    themeStore?.themeData?.backgroundColor ?? Colors.white,
                 body: SafeArea(child: widget.builder(context, textTheme)),
               );
             },

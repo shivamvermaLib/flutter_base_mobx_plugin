@@ -11,7 +11,6 @@ abstract class TranslationBase {
   static TranslationBase of(BuildContext context) {
     return Localizations.of<TranslationBase>(context, TranslationBase);
   }
-
 }
 
 class TranslationBaseDelegate extends LocalizationsDelegate<TranslationBase> {
@@ -20,7 +19,8 @@ class TranslationBaseDelegate extends LocalizationsDelegate<TranslationBase> {
 
   @override
   bool isSupported(Locale locale) =>
-      translationBase.localizedValues.keys.contains(locale.languageCode);
+      translationBase?.localizedValues?.keys?.contains(locale.languageCode) ??
+      false;
 
   @override
   Future<TranslationBase> load(Locale locale) {

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_mobx_plugin/app/app.dart';
 import 'package:flutter_base_mobx_plugin/app/translations_delegate_base.dart';
+import 'package:flutter_base_mobx_plugin/stores/localization/localization_store.dart';
+import 'package:flutter_base_mobx_plugin/stores/theme/theme_store.dart';
 import 'package:flutter_base_mobx_plugin_example/app_translation.dart';
+import 'package:flutter_base_mobx_plugin_example/screens/screen2.dart';
 import 'package:page_transition/page_transition.dart';
 
 import 'screens/splash.dart';
@@ -18,6 +21,13 @@ enum Screens {
 }
 
 class MyApp extends BaseApp {
+  MyApp() {
+    //Add support for theme
+    providers.add(ThemeStore());
+    //Add support for localization
+    providers.add(LocalizationStore());
+  }
+
   @override
   Widget getScreen(RouteSettings settings) {
     Widget screen = Container(
@@ -37,7 +47,7 @@ class MyApp extends BaseApp {
     } else if (settings.name == Screens.REGISTER.toString()) {
       // screen = RegisterScreen();
     } else if (settings.name == Screens.HOME.toString()) {
-      // screen = HomeScreen();
+      screen = Screen2();
     }
     return screen;
   }

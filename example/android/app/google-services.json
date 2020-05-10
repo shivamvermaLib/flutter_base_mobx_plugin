@@ -1,0 +1,119 @@
+{
+  "project_info": {
+    "project_number": "198540384353",
+    "firebase_url": "https://flutterapps-a739b.firebaseio.com",
+    "project_id": "flutterapps-a739b",
+    "storage_bucket": "flutterapps-a739b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198540384353:android:8cfb722a809f9de93c7220",
+        "android_client_info": {
+          "package_name": "com.example.flutter_mobx_base"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198540384353-sglbf4k8j1bgqcsb56spctcvda2krvap.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz-71Bbekhq5grpiNIDufhpdxJ6Axu_7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198540384353-sglbf4k8j1bgqcsb56spctcvda2krvap.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "198540384353-spr9pdc36t5j32j1ebhjldq3ajurv7dr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pollApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198540384353:android:85e1aaee2eb463f43c7220",
+        "android_client_info": {
+          "package_name": "com.example.poll_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198540384353-sglbf4k8j1bgqcsb56spctcvda2krvap.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz-71Bbekhq5grpiNIDufhpdxJ6Axu_7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198540384353-sglbf4k8j1bgqcsb56spctcvda2krvap.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "198540384353-spr9pdc36t5j32j1ebhjldq3ajurv7dr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pollApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198540384353:android:914ac7195e6099b53c7220",
+        "android_client_info": {
+          "package_name": "com.shivam.flutter_base_mobx_plugin_example"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198540384353-sglbf4k8j1bgqcsb56spctcvda2krvap.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz-71Bbekhq5grpiNIDufhpdxJ6Axu_7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198540384353-sglbf4k8j1bgqcsb56spctcvda2krvap.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "198540384353-spr9pdc36t5j32j1ebhjldq3ajurv7dr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pollApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
