@@ -41,11 +41,13 @@ abstract class BaseApp extends StatelessWidget implements ScreenDelegate {
             debugShowCheckedModeBanner: false,
             initialRoute: initialScreen,
             locale: _localizationStore?.appLocal,
-            localizationsDelegates: [
-              TranslationBaseDelegate(translationBase),
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-            ],
+            localizationsDelegates: translationBase != null
+                ? [
+                    TranslationBaseDelegate(translationBase),
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                  ]
+                : null,
             supportedLocales:
                 translationBase?.supportedLocales ?? [const Locale('en', 'US')],
             onGenerateRoute: (settings) {
