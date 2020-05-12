@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_mobx_plugin/app/app_provider.dart';
 import 'package:flutter_base_mobx_plugin/app/base_screen.dart';
+import 'package:flutter_base_mobx_plugin/app/responsive/sizing_information.dart';
 import 'package:flutter_base_mobx_plugin/app/store_provider.dart';
 import 'package:flutter_base_mobx_plugin/app/translations_delegate_base.dart';
 import 'package:flutter_base_mobx_plugin/stores/app_store.dart';
@@ -21,6 +23,7 @@ class SplashScreen extends BaseScreen {
     ThemeStore themeStore = StoreProvider.of<ThemeStore>(context);
     LocalizationStore localizationStore =
         StoreProvider.of<LocalizationStore>(context);
+
     return Container(
       padding: EdgeInsets.all(20),
       alignment: Alignment.center,
@@ -76,6 +79,8 @@ class SplashScreen extends BaseScreen {
               Text(Localizations.of(context, TranslationBase).subTitle),
             ],
           ),
+          Text("Responsive"),
+          // Text("$sizingInformation"),
           Text("List"),
           Expanded(
             child: Observer(

@@ -46,7 +46,8 @@ abstract class BaseApp extends StatelessWidget implements ScreenDelegate {
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
             ],
-            supportedLocales: translationBase?.supportedLocales,
+            supportedLocales:
+                translationBase?.supportedLocales ?? [const Locale('en')],
             onGenerateRoute: (settings) {
               return PageTransition(
                 child: getScreen(settings),

@@ -121,11 +121,9 @@ packages:
   flutter_base_mobx_plugin:
     dependency: "direct main"
     description:
-      path: "."
-      ref: base
-      resolved-ref: c20ac1e960329202c5f5d96dbbbf4fb39be40564
-      url: "git@github.com:shivamvermaLib/flutter_base_mobx_plugin.git"
-    source: git
+      path: ".."
+      relative: true
+    source: path
     version: "0.0.1"
   flutter_localizations:
     dependency: transitive

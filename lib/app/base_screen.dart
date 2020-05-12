@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_mobx_plugin/app/responsive/responsive_builder.dart';
 import 'package:flutter_base_mobx_plugin/app/store_provider.dart';
 import 'package:flutter_base_mobx_plugin/stores/basescreen/base_screen_store.dart';
 import 'package:flutter_base_mobx_plugin/stores/theme/theme_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
+
+import 'responsive/sizing_information.dart';
 
 abstract class BaseScreen extends StatefulWidget
     implements BaseScreenComponents {
@@ -70,24 +73,25 @@ class _BaseScreenState extends State<BaseScreen> {
       ThemeStore themeStore = StoreProvider.of<ThemeStore>(context);
       TextTheme textTheme = Theme.of(context).textTheme;
       return WillPopScope(
-          child: Observer(
-            builder: (BuildContext context) {
-              return Scaffold(
-                key: widget.scaffoldKey,
-                appBar: widget.baseScreenStore.showAppBar
-                    ? widget.appBar(context)
-                    : null,
-                bottomNavigationBar: widget.bottomNavigationBar(context),
-                floatingActionButton: widget.floatingActionButton(context),
-                floatingActionButtonLocation: widget.floatingActionBarLocation,
-                drawer: widget.drawer(context),
-                backgroundColor:
-                    themeStore?.themeData?.backgroundColor ?? Colors.white,
-                body: SafeArea(child: widget.builder(context, textTheme)),
-              );
-            },
-          ),
-          onWillPop: widget.willPopScope);
+        child: Observer(
+          builder: (BuildContext context) {
+            return Scaffold(
+              key: widget.scaffoldKey,
+              appBar: widget.baseScreenStore.showAppBar
+                  ? widget.appBar(context)
+                  : null,
+              bottomNavigationBar: widget.bottomNavigationBar(context),
+              floatingActionButton: widget.floatingActionButton(context),
+              floatingActionButtonLocation: widget.floatingActionBarLocation,
+              drawer: widget.drawer(context),
+              backgroundColor:
+                  themeStore?.themeData?.backgroundColor ?? Colors.white,
+              body: SafeArea(child: widget.builder(context, textTheme)),
+            );
+          },
+        ),
+        onWillPop: widget.willPopScope,
+      );
     }
     return Container();
   }
