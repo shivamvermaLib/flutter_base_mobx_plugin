@@ -9,6 +9,7 @@ class MobXListView<T> extends StatelessWidget {
   final void Function(double scrollPositionPixels) scrollListener;
   final Future<void> Function() onRefresh;
   final BaseScreenStore baseScreenStore;
+  final Axis scrollDirection;
   const MobXListView({
     @required Key key,
     @required this.list,
@@ -18,6 +19,7 @@ class MobXListView<T> extends StatelessWidget {
     this.sepratedBuilder,
     this.scrollReachesEnd,
     this.onRefresh,
+    this.scrollDirection = Axis.vertical,
   }) : super(key: key);
 
   @override
@@ -32,6 +34,7 @@ class MobXListView<T> extends StatelessWidget {
     final listView = ListView.separated(
       controller: _scrollController,
       itemCount: list.length,
+      scrollDirection: scrollDirection,
       itemBuilder: itemBuilder,
       separatorBuilder: sepratedBuilder ??
           (BuildContext context, int index) => SizedBox.shrink(),
