@@ -7,6 +7,7 @@ class MobXListView<T> extends StatelessWidget {
   final Widget Function(BuildContext context, int index) sepratedBuilder;
   final void Function() scrollReachesEnd;
   final void Function(double scrollPositionPixels) scrollListener;
+  final Future<void> Function() onRefresh;
   final BaseScreenStore baseScreenStore;
   const MobXListView({
     @required Key key,
@@ -16,6 +17,7 @@ class MobXListView<T> extends StatelessWidget {
     @required this.baseScreenStore,
     this.sepratedBuilder,
     this.scrollReachesEnd,
+    this.onRefresh,
   }) : super(key: key);
 
   @override
@@ -27,19 +29,26 @@ class MobXListView<T> extends StatelessWidget {
       baseScreenStore.listScrollPosition["$key"] =
           _scrollController.position.pixels;
     });
+    final listView = ListView.separated(
+      controller: _scrollController,
+      itemCount: list.length,
+      itemBuilder: itemBuilder,
+      separatorBuilder: sepratedBuilder ??
+          (BuildContext context, int index) => SizedBox.shrink(),
+    );
     return NotificationListener<ScrollNotification>(
       onNotification: (ScrollNotification scrollInfo) {
         if (scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent) {
           scrollReachesEnd?.call();
         }
+        return true;
       },
-      child: ListView.separated(
-        controller: _scrollController,
-        itemCount: list.length,
-        itemBuilder: itemBuilder,
-        separatorBuilder: sepratedBuilder ??
-            (BuildContext context, int index) => SizedBox.shrink(),
-      ),
+      child: onRefresh != null
+          ? RefreshIndicator(
+              child: listView,
+              onRefresh: onRefresh,
+            )
+          : listView,
     );
   }
 }

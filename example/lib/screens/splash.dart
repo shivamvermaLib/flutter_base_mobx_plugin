@@ -94,6 +94,8 @@ class SplashScreen extends BaseScreen {
                       onTap: () {
                         NavigationStore navigationStore =
                             StoreProvider.of<NavigationStore>(context);
+                        print("sD->${navigationStore.hashCode}");
+                        
                         navigationStore.navigateTo(Screens.HOME.toString());
                       },
                     );
