@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_mobx_plugin/stores/basescreen/base_screen_store.dart';
 
-class MobXListView<T> extends StatelessWidget {
-  final List<T> list;
+class MobXListView extends StatelessWidget {
+  final int length;
   final Widget Function(BuildContext context, int index) itemBuilder;
   final Widget Function(BuildContext context, int index) sepratedBuilder;
   final void Function() scrollReachesEnd;
@@ -13,7 +13,7 @@ class MobXListView<T> extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   const MobXListView({
     @required Key key,
-    @required this.list,
+    @required this.length,
     @required this.itemBuilder,
     this.scrollListener,
     @required this.baseScreenStore,
@@ -36,7 +36,7 @@ class MobXListView<T> extends StatelessWidget {
     final listView = ListView.separated(
       controller: _scrollController,
       padding: padding,
-      itemCount: list.length,
+      itemCount: length,
       scrollDirection: scrollDirection,
       itemBuilder: itemBuilder,
       separatorBuilder: sepratedBuilder ??

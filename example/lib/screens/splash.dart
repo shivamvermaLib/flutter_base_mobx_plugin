@@ -95,7 +95,7 @@ class SplashScreen extends BaseScreen {
                         NavigationStore navigationStore =
                             StoreProvider.of<NavigationStore>(context);
                         print("sD->${navigationStore.hashCode}");
-                        
+
                         navigationStore.navigateTo(Screens.HOME.toString());
                       },
                     );
@@ -105,7 +105,9 @@ class SplashScreen extends BaseScreen {
                     _splashStore.itemCount += _splashStore.itemCount;
                   },
                   key: Key("list_key_unique"),
-                  list: List.generate(_splashStore.itemCount, (index) => index),
+                  length:
+                      List.generate(_splashStore.itemCount, (index) => index)
+                          .length,
                   scrollListener: (double scrollPositionPixels) {},
                 );
               },
