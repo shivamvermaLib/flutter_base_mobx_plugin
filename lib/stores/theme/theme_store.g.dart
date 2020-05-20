@@ -108,14 +108,16 @@ mixin _$ThemeStore on _ThemeStore, Store {
       {Color primaryColor,
       Color primaryDarkColor,
       Color accentColor,
-      Color backgroundColor}) {
+      Color backgroundColor,
+      Color statusBarColor}) {
     final _$actionInfo = _$_ThemeStoreActionController.startAction();
     try {
       return super.changeTheme(
           primaryColor: primaryColor,
           primaryDarkColor: primaryDarkColor,
           accentColor: accentColor,
-          backgroundColor: backgroundColor);
+          backgroundColor: backgroundColor,
+          statusBarColor: statusBarColor);
     } finally {
       _$_ThemeStoreActionController.endAction(_$actionInfo);
     }

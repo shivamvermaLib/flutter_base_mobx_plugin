@@ -25,15 +25,16 @@ abstract class _ThemeStore with Store {
       );
 
   @action
-  void changeTheme({
-    Color primaryColor,
-    Color primaryDarkColor,
-    Color accentColor,
-    Color backgroundColor,
-  }) {
+  void changeTheme(
+      {Color primaryColor,
+      Color primaryDarkColor,
+      Color accentColor,
+      Color backgroundColor,
+      Color statusBarColor}) {
     if (primaryColor != null) this.primaryColor = primaryColor;
     if (primaryDarkColor != null) this.primaryDarkColor = primaryDarkColor;
     if (accentColor != null) this.accentColor = accentColor;
     if (backgroundColor != null) this.backgroundColor = backgroundColor;
+    if (statusBarColor != null) this.statusBarColor = statusBarColor;
   }
 }
