@@ -97,6 +97,26 @@ mixin _$ThemeStore on _ThemeStore, Store {
     }, _$statusBarColorAtom, name: '${_$statusBarColorAtom.name}_set');
   }
 
+  final _$systemNavigationBarColorAtom =
+      Atom(name: '_ThemeStore.systemNavigationBarColor');
+
+  @override
+  Color get systemNavigationBarColor {
+    _$systemNavigationBarColorAtom.context
+        .enforceReadPolicy(_$systemNavigationBarColorAtom);
+    _$systemNavigationBarColorAtom.reportObserved();
+    return super.systemNavigationBarColor;
+  }
+
+  @override
+  set systemNavigationBarColor(Color value) {
+    _$systemNavigationBarColorAtom.context.conditionallyRunInAction(() {
+      super.systemNavigationBarColor = value;
+      _$systemNavigationBarColorAtom.reportChanged();
+    }, _$systemNavigationBarColorAtom,
+        name: '${_$systemNavigationBarColorAtom.name}_set');
+  }
+
   final _$_ThemeStoreActionController = ActionController(name: '_ThemeStore');
 
   @override
@@ -105,7 +125,8 @@ mixin _$ThemeStore on _ThemeStore, Store {
       Color primaryDarkColor,
       Color accentColor,
       Color backgroundColor,
-      Color statusBarColor}) {
+      Color statusBarColor,
+      Color systemNavigationBarColor}) {
     final _$actionInfo = _$_ThemeStoreActionController.startAction();
     try {
       return super.changeTheme(
@@ -113,7 +134,8 @@ mixin _$ThemeStore on _ThemeStore, Store {
           primaryDarkColor: primaryDarkColor,
           accentColor: accentColor,
           backgroundColor: backgroundColor,
-          statusBarColor: statusBarColor);
+          statusBarColor: statusBarColor,
+          systemNavigationBarColor: systemNavigationBarColor);
     } finally {
       _$_ThemeStoreActionController.endAction(_$actionInfo);
     }
@@ -122,7 +144,7 @@ mixin _$ThemeStore on _ThemeStore, Store {
   @override
   String toString() {
     final string =
-        'primaryColor: ${primaryColor.toString()},primaryDarkColor: ${primaryDarkColor.toString()},accentColor: ${accentColor.toString()},backgroundColor: ${backgroundColor.toString()},statusBarColor: ${statusBarColor.toString()},themeData: ${themeData.toString()}';
+        'primaryColor: ${primaryColor.toString()},primaryDarkColor: ${primaryDarkColor.toString()},accentColor: ${accentColor.toString()},backgroundColor: ${backgroundColor.toString()},statusBarColor: ${statusBarColor.toString()},systemNavigationBarColor: ${systemNavigationBarColor.toString()},themeData: ${themeData.toString()}';
     return '{$string}';
   }
 }

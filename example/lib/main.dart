@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_mobx_plugin/app/app.dart';
-import 'package:flutter_base_mobx_plugin/app/translations_delegate_base.dart';
 import 'package:flutter_base_mobx_plugin/stores/localization/localization_store.dart';
 import 'package:flutter_base_mobx_plugin/stores/theme/theme_store.dart';
-import 'package:flutter_base_mobx_plugin_example/app_translation.dart';
 import 'package:flutter_base_mobx_plugin_example/screens/screen2.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:page_transition/page_transition.dart';
 
+import 'generated/i18n.dart';
 import 'screens/splash.dart';
 
 void main() {
@@ -21,10 +21,10 @@ enum Screens {
 }
 
 class MyApp extends BaseApp {
+  final i18n = I18n.delegate;
   MyApp() {
     //Add support for theme
     providers.add(ThemeStore());
-    //Add support for localization
     providers.add(LocalizationStore());
   }
 
@@ -59,5 +59,21 @@ class MyApp extends BaseApp {
   PageTransitionType pageTransitionType(RouteSettings settings) => null;
 
   @override
-  TranslationBase get translationBase => AppTranslation();
+  bool get supportTranslation => true;
+
+  @override
+  List<Locale> get supportedLocales => i18n.supportedLocales;
+
+  @override
+  List<LocalizationsDelegate> get localizationDelegates => [
+        i18n,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ];
+
+  @override
+  Locale Function(Locale locale, Iterable<Locale> locales)
+      get localeResolutionCallback =>
+          i18n.resolution(fallback: Locale("en", "US"));
 }

@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_base_mobx_plugin/app/store_provider.dart';
+import 'package:flutter_base_mobx_plugin/app/translation.dart';
 import 'package:flutter_base_mobx_plugin/stores/app_store.dart';
 import 'package:flutter_base_mobx_plugin/stores/localization/localization_store.dart';
 import 'package:flutter_base_mobx_plugin/stores/theme/theme_store.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 import 'package:page_transition/page_transition.dart';
 
 import 'screens.dart';
-import 'translations_delegate_base.dart';
 
-abstract class BaseApp extends StatelessWidget implements ScreenDelegate {
+abstract class BaseApp extends StatelessWidget
+    implements ScreenDelegate, TranslationDelegate {
   // final _appStore = AppStore();
-  TranslationBase get translationBase;
   final providers = <Store>[
     NavigationStore(),
+    LocalizationStore(),
   ];
 
   @override
@@ -26,30 +26,30 @@ abstract class BaseApp extends StatelessWidget implements ScreenDelegate {
       child: Observer(
         builder: (BuildContext context) {
           ThemeStore _themeStore = StoreProvider.of<ThemeStore>(context);
-          LocalizationStore _localizationStore =
-              StoreProvider.of<LocalizationStore>(context);
           NavigationStore _navigationStore =
               StoreProvider.of<NavigationStore>(context);
-          SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-            statusBarColor: _themeStore?.statusBarColor ?? Colors.blue,
-          ));
+          LocalizationStore localizationStore =
+              StoreProvider.of<LocalizationStore>(context);
+          // final systemTheme = SystemUiOverlayStyle(
+          //   statusBarColor: _themeStore?.statusBarColor ?? Colors.blue,
+          //   systemNavigationBarColor:
+          //       _themeStore?.systemNavigationBarColor ?? Colors.blue,
+          // );
+          // SystemChrome.setSystemUIOverlayStyle(systemTheme);
           return MaterialApp(
             title: 'Flutter Demo',
             theme: _themeStore?.themeData,
             // darkTheme: ,
+            locale: localizationStore.appLocal,
             navigatorKey: _navigationStore.navigatorKey,
             debugShowCheckedModeBanner: false,
             initialRoute: initialScreen,
-            locale: _localizationStore?.appLocal,
-            localizationsDelegates: translationBase != null
-                ? [
-                    TranslationBaseDelegate(translationBase),
-                    GlobalMaterialLocalizations.delegate,
-                    GlobalWidgetsLocalizations.delegate,
-                  ]
-                : null,
-            supportedLocales:
-                translationBase?.supportedLocales ?? [const Locale('en', 'US')],
+            localizationsDelegates:
+                supportTranslation ? localizationDelegates : null,
+            supportedLocales: supportTranslation
+                ? supportedLocales ?? [const Locale('en', 'US')]
+                : [const Locale('en', 'US')],
+            localeResolutionCallback: localeResolutionCallback,
             onGenerateRoute: (settings) {
               return PageTransition(
                 child: getScreen(settings),

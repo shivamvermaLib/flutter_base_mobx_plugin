@@ -15,6 +15,8 @@ abstract class _ThemeStore with Store {
   Color backgroundColor = Colors.white;
   @observable
   Color statusBarColor = Colors.blue;
+  @observable
+  Color systemNavigationBarColor = Colors.blue;
 
   @computed
   ThemeData get themeData => ThemeData(
@@ -30,11 +32,14 @@ abstract class _ThemeStore with Store {
       Color primaryDarkColor,
       Color accentColor,
       Color backgroundColor,
-      Color statusBarColor}) {
+      Color statusBarColor,
+      Color systemNavigationBarColor}) {
     if (primaryColor != null) this.primaryColor = primaryColor;
     if (primaryDarkColor != null) this.primaryDarkColor = primaryDarkColor;
     if (accentColor != null) this.accentColor = accentColor;
     if (backgroundColor != null) this.backgroundColor = backgroundColor;
     if (statusBarColor != null) this.statusBarColor = statusBarColor;
+    if (systemNavigationBarColor != null)
+      this.systemNavigationBarColor = systemNavigationBarColor;
   }
 }

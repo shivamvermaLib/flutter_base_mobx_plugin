@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_mobx_plugin/app/app_provider.dart';
 import 'package:flutter_base_mobx_plugin/app/base_screen.dart';
-import 'package:flutter_base_mobx_plugin/app/responsive/sizing_information.dart';
 import 'package:flutter_base_mobx_plugin/app/store_provider.dart';
-import 'package:flutter_base_mobx_plugin/app/translations_delegate_base.dart';
 import 'package:flutter_base_mobx_plugin/stores/app_store.dart';
 import 'package:flutter_base_mobx_plugin/stores/localization/localization_store.dart';
 import 'package:flutter_base_mobx_plugin/stores/theme/theme_store.dart';
 import 'package:flutter_base_mobx_plugin/widgets/listview_utils.dart';
+import 'package:flutter_base_mobx_plugin_example/generated/i18n.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 
@@ -23,7 +21,6 @@ class SplashScreen extends BaseScreen {
     ThemeStore themeStore = StoreProvider.of<ThemeStore>(context);
     LocalizationStore localizationStore =
         StoreProvider.of<LocalizationStore>(context);
-
     return Container(
       padding: EdgeInsets.all(20),
       alignment: Alignment.center,
@@ -39,6 +36,8 @@ class SplashScreen extends BaseScreen {
                   themeStore.changeTheme(
                     primaryColor: Colors.orange,
                     accentColor: Colors.orangeAccent,
+                    statusBarColor: Colors.orangeAccent,
+                    systemNavigationBarColor: Colors.orange,
                   );
                 },
                 child: Text("Theme1"),
@@ -48,6 +47,8 @@ class SplashScreen extends BaseScreen {
                   themeStore.changeTheme(
                     primaryColor: Colors.green,
                     accentColor: Colors.greenAccent,
+                    statusBarColor: Colors.green,
+                    systemNavigationBarColor: Colors.greenAccent,
                   );
                 },
                 child: Text("Theme2"),
@@ -60,23 +61,25 @@ class SplashScreen extends BaseScreen {
             children: <Widget>[
               RaisedButton(
                 onPressed: () {
-                  localizationStore.appLocal = Locale('en');
+                  // I18n.locale = Locale('en', 'US');
+                  localizationStore.appLocal = Locale('en', 'US');
                 },
                 child: Text("English"),
               ),
               RaisedButton(
                 onPressed: () {
-                  localizationStore.appLocal = Locale('ar');
+                  // I18n.locale = Locale('fr', "FR");
+                  localizationStore.appLocal = Locale('fr', "FR");
                 },
-                child: Text("Arabic"),
+                child: Text("French"),
               ),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Text(Localizations.of(context, TranslationBase).title),
-              Text(Localizations.of(context, TranslationBase).subTitle),
+              Text(I18n.of(context).title),
+              Text(I18n.of(context).greetTo("Shivam")),
             ],
           ),
           Text("Responsive"),
