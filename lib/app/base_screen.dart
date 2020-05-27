@@ -43,7 +43,7 @@ abstract class BaseScreen extends StatefulWidget
   Widget drawer(BuildContext context) => null;
   @override
   void showMessage(String message, {Duration duration, SnackBarAction action}) {
-    scaffoldKey.currentState.showSnackBar(SnackBar(
+    scaffoldKey.currentState?.showSnackBar(SnackBar(
       content: Text(message),
       duration: duration ?? const Duration(seconds: 4),
       action: action,

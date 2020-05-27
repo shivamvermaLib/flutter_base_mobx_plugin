@@ -61,14 +61,14 @@ class SplashScreen extends BaseScreen {
             children: <Widget>[
               RaisedButton(
                 onPressed: () {
-                  // I18n.locale = Locale('en', 'US');
+                  I18n.locale = Locale('en', 'US');
                   localizationStore.appLocal = Locale('en', 'US');
                 },
                 child: Text("English"),
               ),
               RaisedButton(
                 onPressed: () {
-                  // I18n.locale = Locale('fr', "FR");
+                  I18n.locale = Locale('fr', "FR");
                   localizationStore.appLocal = Locale('fr', "FR");
                 },
                 child: Text("French"),
@@ -95,11 +95,14 @@ class SplashScreen extends BaseScreen {
                       title: Text("Title $index"),
                       subtitle: Text("SubTitle $index"),
                       onTap: () {
-                        NavigationStore navigationStore =
-                            StoreProvider.of<NavigationStore>(context);
-                        print("sD->${navigationStore.hashCode}");
+                        if (index == 0) {
+                          NavigationStore navigationStore =
+                              StoreProvider.of<NavigationStore>(context);
+                          print("sD->${navigationStore.hashCode}");
 
-                        navigationStore.navigateTo(Screens.HOME.toString());
+                          navigationStore.navigateTo(Screens.HOME.toString());
+                        }
+                        _splashStore.itemCount++;
                       },
                     );
                   },
@@ -128,10 +131,22 @@ class SplashScreen extends BaseScreen {
   void dispose(BuildContext context) {}
 
   @override
-  void init(BuildContext context) {}
+  void init(BuildContext context) {
+    mytimer();
+    addReaction(
+        "test",
+        reaction((_) => _splashStore.itemCount, (count) {
+          showMessage("Count:$count");
+        }));
+  }
 
   @override
   String get title => "Test Screen";
+
+  void mytimer() async {
+    await Future.delayed(Duration(milliseconds: 300));
+    _splashStore.itemCount = 5;
+  }
 }
 
 class SplashStore = _SplashStoreBase with _$SplashStore;
