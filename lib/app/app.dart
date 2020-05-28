@@ -30,16 +30,15 @@ abstract class BaseApp extends StatelessWidget
               StoreProvider.of<NavigationStore>(context);
           LocalizationStore localizationStore =
               StoreProvider.of<LocalizationStore>(context);
-          // final systemTheme = SystemUiOverlayStyle(
-          //   statusBarColor: _themeStore?.statusBarColor ?? Colors.blue,
-          //   systemNavigationBarColor:
-          //       _themeStore?.systemNavigationBarColor ?? Colors.blue,
-          // );
-          // SystemChrome.setSystemUIOverlayStyle(systemTheme);
+          final systemTheme = SystemUiOverlayStyle(
+            statusBarColor: _themeStore?.statusBarColor ?? Colors.blue,
+            systemNavigationBarColor:
+                _themeStore?.systemNavigationBarColor ?? Colors.blue,
+          );
+          SystemChrome.setSystemUIOverlayStyle(systemTheme);
           return MaterialApp(
             title: 'Flutter Demo',
             theme: _themeStore?.themeData,
-            // darkTheme: ,
             locale: localizationStore.appLocal,
             navigatorKey: _navigationStore.navigatorKey,
             debugShowCheckedModeBanner: false,
@@ -47,7 +46,7 @@ abstract class BaseApp extends StatelessWidget
             localizationsDelegates:
                 supportTranslation ? localizationDelegates : null,
             supportedLocales: supportTranslation
-                ? supportedLocales ?? [const Locale('en', 'US')]
+                ? (supportedLocales ?? [const Locale('en', 'US')])
                 : [const Locale('en', 'US')],
             localeResolutionCallback: localeResolutionCallback,
             onGenerateRoute: (settings) {

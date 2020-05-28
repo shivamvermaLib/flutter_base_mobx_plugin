@@ -25,7 +25,6 @@ class MyApp extends BaseApp {
   MyApp() {
     //Add support for theme
     providers.add(ThemeStore());
-    
     providers.add(LocalizationStore());
   }
 

@@ -7,6 +7,7 @@ import 'package:flutter_base_mobx_plugin/stores/theme/theme_store.dart';
 import 'package:flutter_base_mobx_plugin/widgets/listview_utils.dart';
 import 'package:flutter_base_mobx_plugin_example/generated/i18n.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mobx/mobx.dart';
 
 import '../main.dart';
@@ -33,25 +34,29 @@ class SplashScreen extends BaseScreen {
             children: <Widget>[
               RaisedButton(
                 onPressed: () {
-                  themeStore.changeTheme(
-                    primaryColor: Colors.orange,
-                    accentColor: Colors.orangeAccent,
-                    statusBarColor: Colors.orangeAccent,
-                    systemNavigationBarColor: Colors.orange,
+                  themeStore.themeData = ThemeData(
+                    accentColor: Colors.redAccent,
+                    primaryColor: Colors.red,
+                    backgroundColor: Colors.white,
+                    textTheme: GoogleFonts.loraTextTheme(
+                        TextTheme(button: TextStyle(color: Colors.blue))),
                   );
+                  themeStore.statusBarColor = Colors.orange;
+                  themeStore.systemNavigationBarColor = Colors.orange;
                 },
-                child: Text("Theme1"),
+                child: Text("Theme1 With Font"),
               ),
               RaisedButton(
                 onPressed: () {
-                  themeStore.changeTheme(
-                    primaryColor: Colors.green,
-                    accentColor: Colors.greenAccent,
-                    statusBarColor: Colors.green,
-                    systemNavigationBarColor: Colors.greenAccent,
-                  );
+                  themeStore.themeData = ThemeData(
+                      accentColor: Colors.greenAccent,
+                      primaryColor: Colors.green,
+                      brightness: Brightness.dark,
+                      textTheme: GoogleFonts.latoTextTheme());
+                  themeStore.statusBarColor = Colors.green;
+                  themeStore.systemNavigationBarColor = Colors.greenAccent;
                 },
-                child: Text("Theme2"),
+                child: Text("Theme2 with Font"),
               ),
             ],
           ),
