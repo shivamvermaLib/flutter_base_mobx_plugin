@@ -6,7 +6,8 @@ import 'package:flutter_base_mobx_plugin/stores/firebase/model/firebase_data.dar
 import 'package:mobx/mobx.dart';
 part 'firestore_data_store.g.dart';
 
-class FireStoreDataStore = _FireStoreDataStoreBase with _$FireStoreDataStore;
+class FireStoreDataStore<T extends FirebaseData> = _FireStoreDataStoreBase<T>
+    with _$FireStoreDataStore;
 
 abstract class _FireStoreDataStoreBase<T extends FirebaseData> with Store {
   final CollectionReference collectionReference;
