@@ -1,15 +1,22 @@
+import 'package:dart_json_mapper/dart_json_mapper.dart';
+import 'package:dart_json_mapper_mobx/dart_json_mapper_mobx.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_mobx_plugin/app/app.dart';
 import 'package:flutter_base_mobx_plugin/stores/localization/localization_store.dart';
 import 'package:flutter_base_mobx_plugin/stores/theme/theme_store.dart';
 import 'package:flutter_base_mobx_plugin_example/screens/screen2.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:mobx/mobx.dart';
 import 'package:page_transition/page_transition.dart';
 
 import 'generated/i18n.dart';
 import 'screens/splash.dart';
 
+import 'main.reflectable.dart' show initializeReflectable;
+
 void main() {
+  initializeReflectable();
+  JsonMapper().useAdapter(mobXAdapter);
   runApp(MyApp());
 }
 
@@ -22,11 +29,6 @@ enum Screens {
 
 class MyApp extends BaseApp {
   final i18n = I18n.delegate;
-  MyApp() {
-    //Add support for theme
-    providers.add(ThemeStore());
-    providers.add(LocalizationStore());
-  }
 
   @override
   Widget getScreen(RouteSettings settings) {
@@ -76,4 +78,10 @@ class MyApp extends BaseApp {
   Locale Function(Locale locale, Iterable<Locale> locales)
       get localeResolutionCallback =>
           i18n.resolution(fallback: Locale("en", "US"));
+
+  @override
+  List<Store> get providers => [
+        ThemeStore(),
+        LocalizationStore(),
+      ];
 }

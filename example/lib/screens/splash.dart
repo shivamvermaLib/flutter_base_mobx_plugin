@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_mobx_plugin/app/base_screen.dart';
-import 'package:flutter_base_mobx_plugin/app/store_provider.dart';
-import 'package:flutter_base_mobx_plugin/stores/app_store.dart';
 import 'package:flutter_base_mobx_plugin/stores/localization/localization_store.dart';
+import 'package:flutter_base_mobx_plugin/stores/navigation/navigation_store.dart';
 import 'package:flutter_base_mobx_plugin/stores/theme/theme_store.dart';
 import 'package:flutter_base_mobx_plugin/widgets/listview_utils.dart';
 import 'package:flutter_base_mobx_plugin_example/generated/i18n.dart';
@@ -19,9 +18,8 @@ class SplashScreen extends BaseScreen {
 
   @override
   Widget builder(BuildContext context, TextTheme textTheme) {
-    ThemeStore themeStore = StoreProvider.of<ThemeStore>(context);
-    LocalizationStore localizationStore =
-        StoreProvider.of<LocalizationStore>(context);
+    ThemeStore themeStore = getIt<ThemeStore>();
+    LocalizationStore localizationStore = getIt<LocalizationStore>();
     return Container(
       padding: EdgeInsets.all(20),
       alignment: Alignment.center,
@@ -102,7 +100,7 @@ class SplashScreen extends BaseScreen {
                       onTap: () {
                         if (index == 0) {
                           NavigationStore navigationStore =
-                              StoreProvider.of<NavigationStore>(context);
+                              getIt<NavigationStore>();
                           print("sD->${navigationStore.hashCode}");
 
                           navigationStore.navigateTo(Screens.HOME.toString());

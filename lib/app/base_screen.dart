@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_mobx_plugin/app/responsive/responsive_builder.dart';
-import 'package:flutter_base_mobx_plugin/app/store_provider.dart';
+import 'package:flutter_base_mobx_plugin/app/observer_listener.dart';
 import 'package:flutter_base_mobx_plugin/stores/basescreen/base_screen_store.dart';
 import 'package:flutter_base_mobx_plugin/stores/theme/theme_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
-
-import 'responsive/sizing_information.dart';
 
 abstract class BaseScreen extends StatefulWidget
     implements BaseScreenComponents {
+  final GetIt getIt = GetIt.instance;
+
   final baseScreenStore = BaseScreenStore();
   final Map<String, ReactionDisposer> disposers = {};
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -64,33 +64,35 @@ class _BaseScreenState extends State<BaseScreen> {
   @override
   Widget build(BuildContext context) {
     if (ModalRoute.of(context).isCurrent) {
-      widget.addReaction(
-          "message",
-          reaction((_) => widget.baseScreenStore.message, (message) {
-            if (message != null) widget.showMessage(message);
-            widget.baseScreenStore.message = null;
-          }));
-      ThemeStore themeStore = StoreProvider.of<ThemeStore>(context);
+      ThemeStore themeStore = widget.getIt<ThemeStore>();
       TextTheme textTheme = Theme.of(context).textTheme;
-      return WillPopScope(
-        child: Observer(
-          builder: (BuildContext context) {
-            return Scaffold(
-              key: widget.scaffoldKey,
-              appBar: widget.baseScreenStore.showAppBar
-                  ? widget.appBar(context)
-                  : null,
-              bottomNavigationBar: widget.bottomNavigationBar(context),
-              floatingActionButton: widget.floatingActionButton(context),
-              floatingActionButtonLocation: widget.floatingActionBarLocation,
-              drawer: widget.drawer(context),
-              backgroundColor:
-                  themeStore?.themeData?.backgroundColor ?? Colors.white,
-              body: SafeArea(child: widget.builder(context, textTheme)),
-            );
-          },
+      return ObserverListener(
+        listener: (_) {
+          if (widget.baseScreenStore.message != null) {
+            widget.showMessage(widget.baseScreenStore.message);
+            widget.baseScreenStore.message = null;
+          }
+        },
+        child: WillPopScope(
+          child: Observer(
+            builder: (BuildContext context) {
+              return Scaffold(
+                key: widget.scaffoldKey,
+                appBar: widget.baseScreenStore.showAppBar
+                    ? widget.appBar(context)
+                    : null,
+                bottomNavigationBar: widget.bottomNavigationBar(context),
+                floatingActionButton: widget.floatingActionButton(context),
+                floatingActionButtonLocation: widget.floatingActionBarLocation,
+                drawer: widget.drawer(context),
+                backgroundColor:
+                    themeStore?.themeData?.backgroundColor ?? Colors.white,
+                body: SafeArea(child: widget.builder(context, textTheme)),
+              );
+            },
+          ),
+          onWillPop: widget.willPopScope,
         ),
-        onWillPop: widget.willPopScope,
       );
     }
     return Container();
