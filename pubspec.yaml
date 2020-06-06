@@ -17,6 +17,11 @@ dependencies:
   flutter_mobx: ^1.1.0
   page_transition: ^1.1.5
   get_it: ^4.0.2
+  firebase_auth: ^0.16.1
+  cloud_firestore: ^0.13.6
+  dart_json_mapper:
+  dart_json_mapper_mobx:
+
 
 dev_dependencies:
   flutter_test:
