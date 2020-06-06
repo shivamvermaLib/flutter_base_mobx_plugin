@@ -16,6 +16,7 @@ abstract class BaseApp extends StatelessWidget
 
   BaseApp() {
     _getIt.registerSingleton(NavigationStore());
+    _getIt.registerSingleton(LocalizationStore());
   }
 
   void registerStore<T extends Store>(T store) {

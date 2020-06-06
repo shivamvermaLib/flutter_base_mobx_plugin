@@ -32,7 +32,7 @@ class MyApp extends BaseApp {
 
   MyApp() {
     registerStore(ThemeStore());
-    registerStore(LocalizationStore());
+    // registerStore(LocalizationStore());
   }
 
   @override
