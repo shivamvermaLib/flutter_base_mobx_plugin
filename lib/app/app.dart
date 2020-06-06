@@ -12,18 +12,14 @@ import 'translation_delegate.dart';
 
 abstract class BaseApp extends StatelessWidget
     implements ScreenDelegate, TranslationDelegate {
-  // final _appStore = AppStore();
-  List<Store> get providers;
-
   final _getIt = GetIt.instance;
 
   BaseApp() {
     _getIt.registerSingleton(NavigationStore());
-    providers?.forEach((store) {
-      if (!_getIt.isRegistered(instance: store)) {
-        _getIt.registerSingleton(store);
-      }
-    });
+  }
+
+  void registerStore<T extends Store>(T store) {
+    _getIt.registerSingleton(store);
   }
 
   @override

@@ -30,6 +30,11 @@ enum Screens {
 class MyApp extends BaseApp {
   final i18n = I18n.delegate;
 
+  MyApp() {
+    registerStore(ThemeStore());
+    registerStore(LocalizationStore());
+  }
+
   @override
   Widget getScreen(RouteSettings settings) {
     Widget screen = Container(
@@ -78,10 +83,4 @@ class MyApp extends BaseApp {
   Locale Function(Locale locale, Iterable<Locale> locales)
       get localeResolutionCallback =>
           i18n.resolution(fallback: Locale("en", "US"));
-
-  @override
-  List<Store> get providers => [
-        ThemeStore(),
-        LocalizationStore(),
-      ];
 }
