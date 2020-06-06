@@ -3,38 +3,54 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dart_json_mapper/dart_json_mapper.dart';
 import 'package:flutter_base_mobx_plugin/stores/firebase/model/firebase_data.dart';
+import 'package:mobx/mobx.dart';
+part 'firestore_data_store.g.dart';
 
-abstract class FireStoreDataStore<T extends FirebaseData> {
+class FireStoreDataStore = _FireStoreDataStoreBase with _$FireStoreDataStore;
+
+abstract class _FireStoreDataStoreBase<T extends FirebaseData> with Store {
   final CollectionReference collectionReference;
 
-  FireStoreDataStore(this.collectionReference) {
+  _FireStoreDataStoreBase(this.collectionReference) {
     assert(collectionReference != null);
   }
 
-  Future<T> addUpdateItem(T item) async {
-    if (item.id == null) {
-      item.id = collectionReference.document().documentID;
-      item.created = DateTime.now();
-    } else {
-      item.updated = DateTime.now();
-    }
-    await collectionReference.document(item.id).setData(JsonMapper.toMap(item));
-    return item;
+  @action
+  ObservableFuture<T> addUpdateItem(T item) {
+    return ObservableFuture(Future(() async {
+      if (item.id == null) {
+        item.id = collectionReference.document().documentID;
+        item.created = DateTime.now();
+      } else {
+        item.updated = DateTime.now();
+      }
+      await collectionReference
+          .document(item.id)
+          .setData(JsonMapper.toMap(item));
+      return item;
+    }));
   }
 
-  Future<void> deleteItem(String id) async {
+  @action
+  ObservableFuture<void> deleteItem(String id) {
     assert(id != null);
-    await collectionReference.document(id).delete();
+    return ObservableFuture(Future(() async {
+      await collectionReference.document(id).delete();
+    }));
   }
 
-  Future<T> getItem(String id) async {
+  @action
+  ObservableFuture<T> getItem(String id) {
     assert(id != null);
-    final snapshot = await collectionReference.document(id).get();
-    T item = JsonMapper.fromMap(snapshot.data);
-    return item;
+    return ObservableFuture(Future(() async {
+      final snapshot = await collectionReference.document(id).get();
+      T item = JsonMapper.fromMap(snapshot.data);
+      return item;
+    }));
   }
 
-  Future<List<T>> fetchItemsWhere(
+  @action
+  ObservableFuture<List<T>> fetchItemsWhere(
     dynamic field, {
     dynamic isEqualTo,
     dynamic isLessThan,
@@ -45,35 +61,45 @@ abstract class FireStoreDataStore<T extends FirebaseData> {
     List<dynamic> arrayContainsAny,
     List<dynamic> whereIn,
     bool isNull,
-  }) async {
-    try {
-      final list = await collectionReference
-          .where(field,
-              isEqualTo: isEqualTo,
-              arrayContains: arrayContains,
-              arrayContainsAny: arrayContainsAny,
-              isGreaterThan: isGreaterThan,
-              isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-              isLessThan: isLessThan,
-              isLessThanOrEqualTo: isLessThanOrEqualTo,
-              isNull: isNull,
-              whereIn: whereIn)
-          .getDocuments();
-      return list.documents.map<T>((e) => JsonMapper.fromMap(e.data)).toList();
-    } catch (e) {
-      return <T>[];
-    }
+  }) {
+    return ObservableFuture(Future(() async {
+      try {
+        final list = await collectionReference
+            .where(field,
+                isEqualTo: isEqualTo,
+                arrayContains: arrayContains,
+                arrayContainsAny: arrayContainsAny,
+                isGreaterThan: isGreaterThan,
+                isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+                isLessThan: isLessThan,
+                isLessThanOrEqualTo: isLessThanOrEqualTo,
+                isNull: isNull,
+                whereIn: whereIn)
+            .getDocuments();
+        return list.documents
+            .map<T>((e) => JsonMapper.fromMap(e.data))
+            .toList();
+      } catch (e) {
+        return <T>[];
+      }
+    }));
   }
 
-  Future<List<T>> fetchItems(List<String> ids) async {
+  @action
+  ObservableFuture<List<T>> fetchItems(List<String> ids) {
     assert(ids != null && ids.isNotEmpty);
-    final List<T> list =
-        await fetchItemsWhere(FieldPath.documentId, whereIn: ids);
-    return list;
+    return ObservableFuture(Future(() async {
+      final List<T> list =
+          await fetchItemsWhere(FieldPath.documentId, whereIn: ids);
+      return list;
+    }));
   }
 
-  Future<List<T>> fetchAllItems() async {
-    final list = await collectionReference.getDocuments();
-    return list.documents.map<T>((e) => JsonMapper.fromMap(e.data)).toList();
+  @action
+  ObservableFuture<List<T>> fetchAllItems() {
+    return ObservableFuture(Future(() async {
+      final list = await collectionReference.getDocuments();
+      return list.documents.map<T>((e) => JsonMapper.fromMap(e.data)).toList();
+    }));
   }
 }
