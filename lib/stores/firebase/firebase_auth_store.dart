@@ -27,37 +27,19 @@ abstract class _FirebaseAuthStoreBase with Store {
   }
 
   Future<String> forgetPassword(String email) async {
-    try {
-      await firebaseAuth.sendPasswordResetEmail(email: email);
-      return null;
-    } on PlatformException catch (e) {
-      return e.message;
-    } catch (e) {
-      return e;
-    }
+    await firebaseAuth.sendPasswordResetEmail(email: email);
+    return null;
   }
 
   Future<String> loginUser(String email, String password) async {
-    try {
-      final result = await firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password);
-      return result.user.uid;
-    } on PlatformException catch (e) {
-      return e.message;
-    } catch (e) {
-      return e;
-    }
+    final result = await firebaseAuth.signInWithEmailAndPassword(
+        email: email, password: password);
+    return result.user.uid;
   }
 
   Future<String> registerUser(String email, String password) async {
-    try {
-      final result = await firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      return result.user.uid;
-    } on PlatformException catch (e) {
-      return e.message;
-    } catch (e) {
-      return e;
-    }
+    final result = await firebaseAuth.createUserWithEmailAndPassword(
+        email: email, password: password);
+    return result.user.uid;
   }
 }
