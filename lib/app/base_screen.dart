@@ -51,10 +51,13 @@ abstract class BaseScreen extends StatefulWidget
   }
 
   @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {}
+
+  @override
   Future<bool> willPopScope() async => true;
 }
 
-class _BaseScreenState extends State<BaseScreen> {
+class _BaseScreenState extends State<BaseScreen> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
@@ -110,6 +113,11 @@ class _BaseScreenState extends State<BaseScreen> {
       widget.disposers[key]();
     }
   }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    widget.didChangeAppLifecycleState(state);
+  }
 }
 
 abstract class BaseScreenComponents {
@@ -127,4 +135,5 @@ abstract class BaseScreenComponents {
   FloatingActionButtonLocation get floatingActionBarLocation;
   void showMessage(String message, {Duration duration});
   Future<bool> willPopScope();
+  void didChangeAppLifecycleState(AppLifecycleState state);
 }
