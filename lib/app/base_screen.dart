@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_mobx_plugin/app/responsive/responsive_builder.dart';
 import 'package:flutter_base_mobx_plugin/app/store_provider.dart';
 import 'package:flutter_base_mobx_plugin/stores/basescreen/base_screen_store.dart';
 import 'package:flutter_base_mobx_plugin/stores/theme/theme_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
-
-import 'responsive/sizing_information.dart';
 
 abstract class BaseScreen extends StatefulWidget
     implements BaseScreenComponents {
