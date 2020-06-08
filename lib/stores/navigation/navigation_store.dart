@@ -9,7 +9,8 @@ abstract class _NavigationStore with Store {
   final GlobalKey<NavigatorState> navigatorKey =
       new GlobalKey<NavigatorState>();
 
-  dynamic navigateTo(String path, {isReplace = false, dynamic data}) async {
+  Future<dynamic> navigateTo(String path,
+      {isReplace = false, dynamic data}) async {
     if (isReplace) {
       return await navigatorKey.currentState
           .pushReplacementNamed(path, arguments: data);
