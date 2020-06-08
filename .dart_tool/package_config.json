@@ -3,13 +3,13 @@
   "packages": [
     {
       "name": "_fe_analyzer_shared",
-      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-3.0.0",
+      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-4.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.2"
     },
     {
       "name": "analyzer",
-      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-0.39.8",
+      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-0.39.10",
       "packageUri": "lib/",
       "languageVersion": "2.6"
     },
@@ -39,9 +39,9 @@
     },
     {
       "name": "build",
-      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/build-1.2.2",
+      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/build-1.3.0",
       "packageUri": "lib/",
-      "languageVersion": "2.3"
+      "languageVersion": "2.7"
     },
     {
       "name": "build_config",
@@ -57,19 +57,19 @@
     },
     {
       "name": "build_resolvers",
-      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/build_resolvers-1.3.7",
+      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/build_resolvers-1.3.9",
       "packageUri": "lib/",
       "languageVersion": "2.7"
     },
     {
       "name": "build_runner",
-      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/build_runner-1.9.0",
+      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/build_runner-1.10.0",
       "packageUri": "lib/",
       "languageVersion": "2.6"
     },
     {
       "name": "build_runner_core",
-      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/build_runner_core-5.1.0",
+      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/build_runner_core-5.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.7"
     },
@@ -99,9 +99,9 @@
     },
     {
       "name": "code_builder",
-      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/code_builder-3.2.1",
+      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/code_builder-3.3.0",
       "packageUri": "lib/",
-      "languageVersion": "2.1"
+      "languageVersion": "2.6"
     },
     {
       "name": "collection",
@@ -261,25 +261,25 @@
     },
     {
       "name": "mobx",
-      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/mobx-1.1.1",
+      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/mobx-1.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.7"
     },
     {
       "name": "mobx_codegen",
-      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/mobx_codegen-1.0.3",
+      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/mobx_codegen-1.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.7"
     },
     {
       "name": "node_interop",
-      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/node_interop-1.0.3",
+      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/node_interop-1.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.0"
     },
     {
       "name": "node_io",
-      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/node_io-1.1.0",
+      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/node_io-1.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.2"
     },
@@ -288,12 +288,6 @@
       "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/package_config-1.9.3",
       "packageUri": "lib/",
       "languageVersion": "2.7"
-    },
-    {
-      "name": "page_transition",
-      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/page_transition-1.1.5",
-      "packageUri": "lib/",
-      "languageVersion": "2.0"
     },
     {
       "name": "path",
@@ -452,7 +446,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-05-25T16:24:35.192657Z",
+  "generated": "2020-06-08T18:17:02.777309Z",
   "generator": "pub",
-  "generatorVersion": "2.8.2"
+  "generatorVersion": "2.8.4"
 }
