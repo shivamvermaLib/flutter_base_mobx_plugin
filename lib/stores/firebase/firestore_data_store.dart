@@ -36,7 +36,7 @@ abstract class _FireStoreDataStoreBase<T extends FirebaseData> with Store {
   ObservableFuture<void> updateItem(String id, Map<String, dynamic> data) {
     return ObservableFuture(Future(() async {
       assert(id != null);
-      data['updated'] = DateTime.now();
+      data['updated'] = DateTime.now().toString();
       await collectionReference.document(id).updateData(data);
     }));
   }
