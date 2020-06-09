@@ -219,9 +219,9 @@
     },
     {
       "name": "js",
-      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.1+1",
+      "rootUri": "file:///Users/shivamverma/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.2",
       "packageUri": "lib/",
-      "languageVersion": "1.19"
+      "languageVersion": "2.0"
     },
     {
       "name": "json_annotation",
@@ -446,7 +446,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-06-09T18:25:56.169964Z",
+  "generated": "2020-06-09T18:52:50.385671Z",
   "generator": "pub",
   "generatorVersion": "2.8.4"
 }

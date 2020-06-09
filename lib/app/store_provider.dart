@@ -29,5 +29,5 @@ class StoreProvider extends InheritedWidget {
   }
 
   @override
-  bool updateShouldNotify(InheritedWidget oldWidget) => true;
+  bool updateShouldNotify(InheritedWidget oldWidget) => false;
 }

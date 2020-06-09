@@ -115,7 +115,6 @@ class _BaseScreenState extends State<BaseScreen> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    print("CC->$state");
     widget.didChangeAppLifecycleState(state);
   }
 }
