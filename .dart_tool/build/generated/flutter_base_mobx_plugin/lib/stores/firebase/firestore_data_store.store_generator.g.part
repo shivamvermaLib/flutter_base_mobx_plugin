@@ -21,6 +21,17 @@ mixin _$FireStoreDataStore<T extends FirebaseData>
   }
 
   @override
+  ObservableFuture<void> updateItem(String id, Map<String, dynamic> data) {
+    final _$actionInfo =
+        _$_FireStoreDataStoreBaseActionController.startAction();
+    try {
+      return super.updateItem(id, data);
+    } finally {
+      _$_FireStoreDataStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   ObservableFuture<void> deleteItem(String id) {
     final _$actionInfo =
         _$_FireStoreDataStoreBaseActionController.startAction();

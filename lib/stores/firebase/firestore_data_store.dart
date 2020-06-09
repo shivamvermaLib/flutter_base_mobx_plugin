@@ -33,6 +33,15 @@ abstract class _FireStoreDataStoreBase<T extends FirebaseData> with Store {
   }
 
   @action
+  ObservableFuture<void> updateItem(String id, Map<String, dynamic> data) {
+    return ObservableFuture(Future(() async {
+      assert(id != null);
+      data['updated'] = JsonMapper.serialize(DateTime.now());
+      await collectionReference.document(id).updateData(data);
+    }));
+  }
+
+  @action
   ObservableFuture<void> deleteItem(String id) {
     assert(id != null);
     return ObservableFuture(Future(() async {
