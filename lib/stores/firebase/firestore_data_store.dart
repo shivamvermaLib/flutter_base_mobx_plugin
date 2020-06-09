@@ -97,8 +97,8 @@ abstract class _FireStoreDataStoreBase<T extends FirebaseData> with Store {
 
   @action
   ObservableFuture<List<T>> fetchItems(List<String> ids) {
-    assert(ids != null && ids.isNotEmpty);
     return ObservableFuture(Future(() async {
+      if (ids == null || ids.isEmpty) return <T>[];
       final List<T> list =
           await fetchItemsWhere(FieldPath.documentId, whereIn: ids);
       return list;
