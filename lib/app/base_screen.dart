@@ -58,6 +58,7 @@ class _BaseScreenState extends State<BaseScreen> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     widget.init(context);
   }
 
@@ -104,6 +105,7 @@ class _BaseScreenState extends State<BaseScreen> with WidgetsBindingObserver {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     widget.dispose(context);
     super.dispose();
     for (var key in widget.disposers.keys) {
@@ -113,6 +115,7 @@ class _BaseScreenState extends State<BaseScreen> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
+    print("CC->$state");
     widget.didChangeAppLifecycleState(state);
   }
 }
