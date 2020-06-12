@@ -131,6 +131,12 @@ class SplashScreen extends BaseScreen {
   void didChangeDependencies(BuildContext context) {}
 
   @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    print("Lifecycle->$state");
+  }
+
+  @override
   void dispose(BuildContext context) {}
 
   @override

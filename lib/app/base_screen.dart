@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:flutter_base_mobx_plugin/app/observer_listener.dart';
+=======
+import 'package:flutter_base_mobx_plugin/app/store_provider.dart';
+>>>>>>> base
 import 'package:flutter_base_mobx_plugin/stores/basescreen/base_screen_store.dart';
 import 'package:flutter_base_mobx_plugin/stores/theme/theme_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -51,13 +55,17 @@ abstract class BaseScreen extends StatefulWidget
   }
 
   @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {}
+
+  @override
   Future<bool> willPopScope() async => true;
 }
 
-class _BaseScreenState extends State<BaseScreen> {
+class _BaseScreenState extends State<BaseScreen> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     widget.init(context);
   }
 
@@ -106,11 +114,17 @@ class _BaseScreenState extends State<BaseScreen> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     widget.dispose(context);
     super.dispose();
     for (var key in widget.disposers.keys) {
       widget.disposers[key]();
     }
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    widget.didChangeAppLifecycleState(state);
   }
 }
 
@@ -129,4 +143,5 @@ abstract class BaseScreenComponents {
   FloatingActionButtonLocation get floatingActionBarLocation;
   void showMessage(String message, {Duration duration});
   Future<bool> willPopScope();
+  void didChangeAppLifecycleState(AppLifecycleState state);
 }

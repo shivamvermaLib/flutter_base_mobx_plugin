@@ -6,8 +6,11 @@ import 'package:flutter_base_mobx_plugin/stores/localization/localization_store.
 import 'package:flutter_base_mobx_plugin/stores/theme/theme_store.dart';
 import 'package:flutter_base_mobx_plugin_example/screens/screen2.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+<<<<<<< HEAD
 import 'package:mobx/mobx.dart';
 import 'package:page_transition/page_transition.dart';
+=======
+>>>>>>> base
 
 import 'generated/i18n.dart';
 import 'screens/splash.dart';
@@ -62,8 +65,8 @@ class MyApp extends BaseApp {
   @override
   String get initialScreen => Screens.SPLASH.toString();
 
-  @override
-  PageTransitionType pageTransitionType(RouteSettings settings) => null;
+  // @override
+  // PageTransitionType pageTransitionType(RouteSettings settings) => null;
 
   @override
   bool get supportTranslation => true;
