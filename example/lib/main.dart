@@ -81,9 +81,4 @@ class MyApp extends BaseApp {
   Locale Function(Locale locale, Iterable<Locale> locales)
       get localeResolutionCallback =>
           i18n.resolution(fallback: Locale("en", "US"));
-
-  @override
-  PageTransition pageTransitionType(RouteSettings settings) {
-    return PageTransition.rightToLeft;
-  }
 }
