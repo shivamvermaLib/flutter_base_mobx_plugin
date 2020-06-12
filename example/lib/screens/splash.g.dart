@@ -13,22 +13,21 @@ mixin _$SplashStore on _SplashStoreBase, Store {
 
   @override
   int get itemCount {
-    _$itemCountAtom.context.enforceReadPolicy(_$itemCountAtom);
-    _$itemCountAtom.reportObserved();
+    _$itemCountAtom.reportRead();
     return super.itemCount;
   }
 
   @override
   set itemCount(int value) {
-    _$itemCountAtom.context.conditionallyRunInAction(() {
+    _$itemCountAtom.reportWrite(value, super.itemCount, () {
       super.itemCount = value;
-      _$itemCountAtom.reportChanged();
-    }, _$itemCountAtom, name: '${_$itemCountAtom.name}_set');
+    });
   }
 
   @override
   String toString() {
-    final string = 'itemCount: ${itemCount.toString()}';
-    return '{$string}';
+    return '''
+itemCount: ${itemCount}
+    ''';
   }
 }

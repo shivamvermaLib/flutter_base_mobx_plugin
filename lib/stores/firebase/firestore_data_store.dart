@@ -99,10 +99,21 @@ abstract class _FireStoreDataStoreBase<T extends FirebaseData> with Store {
   ObservableFuture<List<T>> fetchItems(List<String> ids) {
     return ObservableFuture(Future(() async {
       if (ids == null || ids.isEmpty) return <T>[];
-      final List<T> list =
-          await fetchItemsWhere(FieldPath.documentId, whereIn: ids);
+      List<T> list = [];
+      List<List<String>> iids = _pairs<String>(ids);
+      for (var ids in iids) {
+        list.addAll(await fetchItemsWhere(FieldPath.documentId, whereIn: ids));
+      }
       return list;
     }));
+  }
+
+  List<List<T>> _pairs<T>(List<T> list, {int parition = 10}) {
+    if (list.isEmpty)
+      return [];
+    else
+      return (<List<T>>[list.take(parition).toList()]
+        ..addAll(_pairs(list.skip(parition).toList())));
   }
 
   @action

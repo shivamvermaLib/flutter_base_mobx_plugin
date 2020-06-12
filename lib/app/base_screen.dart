@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:flutter_base_mobx_plugin/app/observer_listener.dart';
-=======
-import 'package:flutter_base_mobx_plugin/app/store_provider.dart';
->>>>>>> base
 import 'package:flutter_base_mobx_plugin/stores/basescreen/base_screen_store.dart';
 import 'package:flutter_base_mobx_plugin/stores/theme/theme_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';

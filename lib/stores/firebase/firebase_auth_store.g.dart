@@ -13,30 +13,30 @@ mixin _$FirebaseAuthStore on _FirebaseAuthStoreBase, Store {
 
   @override
   bool get isUserLoggedIn =>
-      (_$isUserLoggedInComputed ??= Computed<bool>(() => super.isUserLoggedIn))
+      (_$isUserLoggedInComputed ??= Computed<bool>(() => super.isUserLoggedIn,
+              name: '_FirebaseAuthStoreBase.isUserLoggedIn'))
           .value;
 
   final _$currentUserAtom = Atom(name: '_FirebaseAuthStoreBase.currentUser');
 
   @override
   FirebaseUser get currentUser {
-    _$currentUserAtom.context.enforceReadPolicy(_$currentUserAtom);
-    _$currentUserAtom.reportObserved();
+    _$currentUserAtom.reportRead();
     return super.currentUser;
   }
 
   @override
   set currentUser(FirebaseUser value) {
-    _$currentUserAtom.context.conditionallyRunInAction(() {
+    _$currentUserAtom.reportWrite(value, super.currentUser, () {
       super.currentUser = value;
-      _$currentUserAtom.reportChanged();
-    }, _$currentUserAtom, name: '${_$currentUserAtom.name}_set');
+    });
   }
 
   @override
   String toString() {
-    final string =
-        'currentUser: ${currentUser.toString()},isUserLoggedIn: ${isUserLoggedIn.toString()}';
-    return '{$string}';
+    return '''
+currentUser: ${currentUser},
+isUserLoggedIn: ${isUserLoggedIn}
+    ''';
   }
 }

@@ -13,22 +13,21 @@ mixin _$LocalizationStore on _LocalizationStore, Store {
 
   @override
   Locale get appLocal {
-    _$appLocalAtom.context.enforceReadPolicy(_$appLocalAtom);
-    _$appLocalAtom.reportObserved();
+    _$appLocalAtom.reportRead();
     return super.appLocal;
   }
 
   @override
   set appLocal(Locale value) {
-    _$appLocalAtom.context.conditionallyRunInAction(() {
+    _$appLocalAtom.reportWrite(value, super.appLocal, () {
       super.appLocal = value;
-      _$appLocalAtom.reportChanged();
-    }, _$appLocalAtom, name: '${_$appLocalAtom.name}_set');
+    });
   }
 
   @override
   String toString() {
-    final string = 'appLocal: ${appLocal.toString()}';
-    return '{$string}';
+    return '''
+appLocal: ${appLocal}
+    ''';
   }
 }

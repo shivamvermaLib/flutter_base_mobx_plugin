@@ -11,7 +11,8 @@ part of 'navigation_store.dart';
 mixin _$NavigationStore on _NavigationStore, Store {
   @override
   String toString() {
-    final string = '';
-    return '{$string}';
+    return '''
+
+    ''';
   }
 }

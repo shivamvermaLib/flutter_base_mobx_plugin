@@ -6,7 +6,6 @@ import 'package:flutter_base_mobx_plugin/stores/theme/theme_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
-import 'package:page_transition/page_transition.dart';
 import 'screens_delegate.dart';
 import 'translation_delegate.dart';
 
@@ -53,11 +52,10 @@ abstract class BaseApp extends StatelessWidget
               : [const Locale('en', 'US')],
           localeResolutionCallback: localeResolutionCallback,
           onGenerateRoute: (settings) {
-            return PageTransition(
-              child: getScreen(settings),
-              type: pageTransitionType(settings) ??
-                  PageTransitionType.rightToLeft,
-            );
+            return MaterialPageRoute(
+                builder: (BuildContext context) => getScreen(settings),
+                settings: settings,
+                maintainState: true);
           },
         );
       },

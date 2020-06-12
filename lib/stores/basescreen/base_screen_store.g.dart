@@ -13,34 +13,30 @@ mixin _$BaseScreenStore on _BaseScreenStore, Store {
 
   @override
   String get title {
-    _$titleAtom.context.enforceReadPolicy(_$titleAtom);
-    _$titleAtom.reportObserved();
+    _$titleAtom.reportRead();
     return super.title;
   }
 
   @override
   set title(String value) {
-    _$titleAtom.context.conditionallyRunInAction(() {
+    _$titleAtom.reportWrite(value, super.title, () {
       super.title = value;
-      _$titleAtom.reportChanged();
-    }, _$titleAtom, name: '${_$titleAtom.name}_set');
+    });
   }
 
   final _$messageAtom = Atom(name: '_BaseScreenStore.message');
 
   @override
   String get message {
-    _$messageAtom.context.enforceReadPolicy(_$messageAtom);
-    _$messageAtom.reportObserved();
+    _$messageAtom.reportRead();
     return super.message;
   }
 
   @override
   set message(String value) {
-    _$messageAtom.context.conditionallyRunInAction(() {
+    _$messageAtom.reportWrite(value, super.message, () {
       super.message = value;
-      _$messageAtom.reportChanged();
-    }, _$messageAtom, name: '${_$messageAtom.name}_set');
+    });
   }
 
   final _$bottomNavigationIndexAtom =
@@ -48,36 +44,31 @@ mixin _$BaseScreenStore on _BaseScreenStore, Store {
 
   @override
   int get bottomNavigationIndex {
-    _$bottomNavigationIndexAtom.context
-        .enforceReadPolicy(_$bottomNavigationIndexAtom);
-    _$bottomNavigationIndexAtom.reportObserved();
+    _$bottomNavigationIndexAtom.reportRead();
     return super.bottomNavigationIndex;
   }
 
   @override
   set bottomNavigationIndex(int value) {
-    _$bottomNavigationIndexAtom.context.conditionallyRunInAction(() {
+    _$bottomNavigationIndexAtom.reportWrite(value, super.bottomNavigationIndex,
+        () {
       super.bottomNavigationIndex = value;
-      _$bottomNavigationIndexAtom.reportChanged();
-    }, _$bottomNavigationIndexAtom,
-        name: '${_$bottomNavigationIndexAtom.name}_set');
+    });
   }
 
   final _$showAppBarAtom = Atom(name: '_BaseScreenStore.showAppBar');
 
   @override
   bool get showAppBar {
-    _$showAppBarAtom.context.enforceReadPolicy(_$showAppBarAtom);
-    _$showAppBarAtom.reportObserved();
+    _$showAppBarAtom.reportRead();
     return super.showAppBar;
   }
 
   @override
   set showAppBar(bool value) {
-    _$showAppBarAtom.context.conditionallyRunInAction(() {
+    _$showAppBarAtom.reportWrite(value, super.showAppBar, () {
       super.showAppBar = value;
-      _$showAppBarAtom.reportChanged();
-    }, _$showAppBarAtom, name: '${_$showAppBarAtom.name}_set');
+    });
   }
 
   final _$listScrollPositionAtom =
@@ -85,24 +76,25 @@ mixin _$BaseScreenStore on _BaseScreenStore, Store {
 
   @override
   ObservableMap<String, double> get listScrollPosition {
-    _$listScrollPositionAtom.context
-        .enforceReadPolicy(_$listScrollPositionAtom);
-    _$listScrollPositionAtom.reportObserved();
+    _$listScrollPositionAtom.reportRead();
     return super.listScrollPosition;
   }
 
   @override
   set listScrollPosition(ObservableMap<String, double> value) {
-    _$listScrollPositionAtom.context.conditionallyRunInAction(() {
+    _$listScrollPositionAtom.reportWrite(value, super.listScrollPosition, () {
       super.listScrollPosition = value;
-      _$listScrollPositionAtom.reportChanged();
-    }, _$listScrollPositionAtom, name: '${_$listScrollPositionAtom.name}_set');
+    });
   }
 
   @override
   String toString() {
-    final string =
-        'title: ${title.toString()},message: ${message.toString()},bottomNavigationIndex: ${bottomNavigationIndex.toString()},showAppBar: ${showAppBar.toString()},listScrollPosition: ${listScrollPosition.toString()}';
-    return '{$string}';
+    return '''
+title: ${title},
+message: ${message},
+bottomNavigationIndex: ${bottomNavigationIndex},
+showAppBar: ${showAppBar},
+listScrollPosition: ${listScrollPosition}
+    ''';
   }
 }

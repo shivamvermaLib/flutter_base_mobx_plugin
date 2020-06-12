@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
 import 'package:mobx/mobx.dart';
 part 'firebase_auth_store.g.dart';
 

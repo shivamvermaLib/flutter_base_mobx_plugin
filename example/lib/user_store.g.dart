@@ -11,7 +11,8 @@ part of 'user_store.dart';
 mixin _$UserStore on _UserStoreBase, Store {
   @override
   String toString() {
-    final string = '';
-    return '{$string}';
+    return '''
+
+    ''';
   }
 }

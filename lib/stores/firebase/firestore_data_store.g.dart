@@ -15,8 +15,8 @@ mixin _$FireStoreDataStore<T extends FirebaseData>
 
   @override
   ObservableFuture<T> addUpdateItem(T item) {
-    final _$actionInfo =
-        _$_FireStoreDataStoreBaseActionController.startAction();
+    final _$actionInfo = _$_FireStoreDataStoreBaseActionController.startAction(
+        name: '_FireStoreDataStoreBase.addUpdateItem');
     try {
       return super.addUpdateItem(item);
     } finally {
@@ -26,8 +26,8 @@ mixin _$FireStoreDataStore<T extends FirebaseData>
 
   @override
   ObservableFuture<void> updateItem(String id, Map<String, dynamic> data) {
-    final _$actionInfo =
-        _$_FireStoreDataStoreBaseActionController.startAction();
+    final _$actionInfo = _$_FireStoreDataStoreBaseActionController.startAction(
+        name: '_FireStoreDataStoreBase.updateItem');
     try {
       return super.updateItem(id, data);
     } finally {
@@ -37,8 +37,8 @@ mixin _$FireStoreDataStore<T extends FirebaseData>
 
   @override
   ObservableFuture<void> deleteItem(String id) {
-    final _$actionInfo =
-        _$_FireStoreDataStoreBaseActionController.startAction();
+    final _$actionInfo = _$_FireStoreDataStoreBaseActionController.startAction(
+        name: '_FireStoreDataStoreBase.deleteItem');
     try {
       return super.deleteItem(id);
     } finally {
@@ -48,8 +48,8 @@ mixin _$FireStoreDataStore<T extends FirebaseData>
 
   @override
   ObservableFuture<T> getItem(String id) {
-    final _$actionInfo =
-        _$_FireStoreDataStoreBaseActionController.startAction();
+    final _$actionInfo = _$_FireStoreDataStoreBaseActionController.startAction(
+        name: '_FireStoreDataStoreBase.getItem');
     try {
       return super.getItem(id);
     } finally {
@@ -68,8 +68,8 @@ mixin _$FireStoreDataStore<T extends FirebaseData>
       List<dynamic> arrayContainsAny,
       List<dynamic> whereIn,
       bool isNull}) {
-    final _$actionInfo =
-        _$_FireStoreDataStoreBaseActionController.startAction();
+    final _$actionInfo = _$_FireStoreDataStoreBaseActionController.startAction(
+        name: '_FireStoreDataStoreBase.fetchItemsWhere');
     try {
       return super.fetchItemsWhere(field,
           isEqualTo: isEqualTo,
@@ -88,8 +88,8 @@ mixin _$FireStoreDataStore<T extends FirebaseData>
 
   @override
   ObservableFuture<List<T>> fetchItems(List<String> ids) {
-    final _$actionInfo =
-        _$_FireStoreDataStoreBaseActionController.startAction();
+    final _$actionInfo = _$_FireStoreDataStoreBaseActionController.startAction(
+        name: '_FireStoreDataStoreBase.fetchItems');
     try {
       return super.fetchItems(ids);
     } finally {
@@ -99,8 +99,8 @@ mixin _$FireStoreDataStore<T extends FirebaseData>
 
   @override
   ObservableFuture<List<T>> fetchAllItems() {
-    final _$actionInfo =
-        _$_FireStoreDataStoreBaseActionController.startAction();
+    final _$actionInfo = _$_FireStoreDataStoreBaseActionController.startAction(
+        name: '_FireStoreDataStoreBase.fetchAllItems');
     try {
       return super.fetchAllItems();
     } finally {
@@ -110,7 +110,8 @@ mixin _$FireStoreDataStore<T extends FirebaseData>
 
   @override
   String toString() {
-    final string = '';
-    return '{$string}';
+    return '''
+
+    ''';
   }
 }

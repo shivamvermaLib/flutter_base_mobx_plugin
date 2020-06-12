@@ -2,15 +2,10 @@ import 'package:dart_json_mapper/dart_json_mapper.dart';
 import 'package:dart_json_mapper_mobx/dart_json_mapper_mobx.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_mobx_plugin/app/app.dart';
-import 'package:flutter_base_mobx_plugin/stores/localization/localization_store.dart';
+import 'package:flutter_base_mobx_plugin/app/screens_delegate.dart';
 import 'package:flutter_base_mobx_plugin/stores/theme/theme_store.dart';
 import 'package:flutter_base_mobx_plugin_example/screens/screen2.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-<<<<<<< HEAD
-import 'package:mobx/mobx.dart';
-import 'package:page_transition/page_transition.dart';
-=======
->>>>>>> base
 
 import 'generated/i18n.dart';
 import 'screens/splash.dart';
@@ -86,4 +81,9 @@ class MyApp extends BaseApp {
   Locale Function(Locale locale, Iterable<Locale> locales)
       get localeResolutionCallback =>
           i18n.resolution(fallback: Locale("en", "US"));
+
+  @override
+  PageTransition pageTransitionType(RouteSettings settings) {
+    return PageTransition.rightToLeft;
+  }
 }

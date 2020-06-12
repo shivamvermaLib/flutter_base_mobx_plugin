@@ -7,22 +7,14 @@ packages:
       name: _fe_analyzer_shared
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "1.0.3"
-=======
-    version: "4.0.0"
->>>>>>> base
   analyzer:
     dependency: transitive
     description:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "0.39.4"
-=======
-    version: "0.39.10"
->>>>>>> base
   archive:
     dependency: transitive
     description:
@@ -57,7 +49,7 @@ packages:
       name: build
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.0"
+    version: "1.2.2"
   build_config:
     dependency: transitive
     description:
@@ -78,33 +70,21 @@ packages:
       name: build_resolvers
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "1.3.3"
-=======
-    version: "1.3.9"
->>>>>>> base
   build_runner:
     dependency: "direct dev"
     description:
       name: build_runner
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "1.8.0"
-=======
-    version: "1.10.0"
->>>>>>> base
   build_runner_core:
     dependency: transitive
     description:
       name: build_runner_core
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "4.5.3"
-=======
-    version: "5.2.0"
->>>>>>> base
   built_collection:
     dependency: transitive
     description:
@@ -195,7 +175,7 @@ packages:
       name: dart_json_mapper
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.5.13"
+    version: "1.5.14"
   dart_json_mapper_mobx:
     dependency: "direct main"
     description:
@@ -440,7 +420,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.9.3"
-<<<<<<< HEAD
   package_resolver:
     dependency: transitive
     description:
@@ -448,15 +427,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.10"
-  page_transition:
-    dependency: "direct main"
-    description:
-      name: page_transition
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.5"
-=======
->>>>>>> base
   path:
     dependency: transitive
     description:

@@ -13,17 +13,15 @@ mixin _$ThemeStore on _ThemeStore, Store {
 
   @override
   Color get statusBarColor {
-    _$statusBarColorAtom.context.enforceReadPolicy(_$statusBarColorAtom);
-    _$statusBarColorAtom.reportObserved();
+    _$statusBarColorAtom.reportRead();
     return super.statusBarColor;
   }
 
   @override
   set statusBarColor(Color value) {
-    _$statusBarColorAtom.context.conditionallyRunInAction(() {
+    _$statusBarColorAtom.reportWrite(value, super.statusBarColor, () {
       super.statusBarColor = value;
-      _$statusBarColorAtom.reportChanged();
-    }, _$statusBarColorAtom, name: '${_$statusBarColorAtom.name}_set');
+    });
   }
 
   final _$systemNavigationBarColorAtom =
@@ -31,42 +29,39 @@ mixin _$ThemeStore on _ThemeStore, Store {
 
   @override
   Color get systemNavigationBarColor {
-    _$systemNavigationBarColorAtom.context
-        .enforceReadPolicy(_$systemNavigationBarColorAtom);
-    _$systemNavigationBarColorAtom.reportObserved();
+    _$systemNavigationBarColorAtom.reportRead();
     return super.systemNavigationBarColor;
   }
 
   @override
   set systemNavigationBarColor(Color value) {
-    _$systemNavigationBarColorAtom.context.conditionallyRunInAction(() {
+    _$systemNavigationBarColorAtom
+        .reportWrite(value, super.systemNavigationBarColor, () {
       super.systemNavigationBarColor = value;
-      _$systemNavigationBarColorAtom.reportChanged();
-    }, _$systemNavigationBarColorAtom,
-        name: '${_$systemNavigationBarColorAtom.name}_set');
+    });
   }
 
   final _$themeDataAtom = Atom(name: '_ThemeStore.themeData');
 
   @override
   ThemeData get themeData {
-    _$themeDataAtom.context.enforceReadPolicy(_$themeDataAtom);
-    _$themeDataAtom.reportObserved();
+    _$themeDataAtom.reportRead();
     return super.themeData;
   }
 
   @override
   set themeData(ThemeData value) {
-    _$themeDataAtom.context.conditionallyRunInAction(() {
+    _$themeDataAtom.reportWrite(value, super.themeData, () {
       super.themeData = value;
-      _$themeDataAtom.reportChanged();
-    }, _$themeDataAtom, name: '${_$themeDataAtom.name}_set');
+    });
   }
 
   @override
   String toString() {
-    final string =
-        'statusBarColor: ${statusBarColor.toString()},systemNavigationBarColor: ${systemNavigationBarColor.toString()},themeData: ${themeData.toString()}';
-    return '{$string}';
+    return '''
+statusBarColor: ${statusBarColor},
+systemNavigationBarColor: ${systemNavigationBarColor},
+themeData: ${themeData}
+    ''';
   }
 }
