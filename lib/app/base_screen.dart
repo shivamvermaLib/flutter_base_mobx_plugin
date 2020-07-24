@@ -1,3 +1,4 @@
+import 'package:after_init/after_init.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_mobx_plugin/app/store_provider.dart';
 import 'package:flutter_base_mobx_plugin/stores/basescreen/base_screen_store.dart';
@@ -49,13 +50,20 @@ abstract class BaseScreen extends StatefulWidget
 
   @override
   Future<bool> willPopScope() async => true;
+
+  void didInitState() {}
 }
 
-class _BaseScreenState extends State<BaseScreen> {
+class _BaseScreenState extends State<BaseScreen> with AfterInitMixin<BaseScreen> {
   @override
   void initState() {
     super.initState();
     widget.init(context);
+  }
+
+  @override
+  void didInitState() {
+    widget.didInitState();
   }
 
   @override
