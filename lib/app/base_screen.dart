@@ -51,7 +51,7 @@ abstract class BaseScreen extends StatefulWidget
   void didChangeAppLifecycleState(AppLifecycleState state) {}
 
   @override
-  Future<bool> willPopScope() async => true;
+  Future<bool> willPopScope(BuildContext context) async => true;
 }
 
 class _BaseScreenState extends State<BaseScreen> with WidgetsBindingObserver {
@@ -91,7 +91,7 @@ class _BaseScreenState extends State<BaseScreen> with WidgetsBindingObserver {
             );
           },
         ),
-        onWillPop: widget.willPopScope,
+        onWillPop: () => widget.willPopScope(context),
       );
     }
     return Container();
