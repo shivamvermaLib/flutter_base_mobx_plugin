@@ -133,6 +133,6 @@ abstract class BaseScreenComponents {
   Widget floatingActionButton(BuildContext context);
   FloatingActionButtonLocation get floatingActionBarLocation;
   void showMessage(String message, {Duration duration});
-  Future<bool> willPopScope();
+  Future<bool> willPopScope(BuildContext context);
   void didChangeAppLifecycleState(AppLifecycleState state);
 }
