@@ -51,7 +51,7 @@ abstract class BaseScreen extends StatefulWidget
   @override
   Future<bool> willPopScope() async => true;
 
-  void didInitState() {}
+  void didInitState(BuildContext context) {}
 }
 
 class _BaseScreenState extends State<BaseScreen> with AfterInitMixin<BaseScreen> {
@@ -63,7 +63,7 @@ class _BaseScreenState extends State<BaseScreen> with AfterInitMixin<BaseScreen>
 
   @override
   void didInitState() {
-    widget.didInitState();
+    widget.didInitState(context);
   }
 
   @override
