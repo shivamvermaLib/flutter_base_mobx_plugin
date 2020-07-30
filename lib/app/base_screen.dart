@@ -42,7 +42,7 @@ abstract class BaseScreen extends StatefulWidget
   void showMessage(String message, {Duration duration, SnackBarAction action}) {
     scaffoldKey.currentState?.showSnackBar(SnackBar(
       content: Text(message),
-      duration: duration ?? const Duration(seconds: 4),
+      duration: duration ?? const Duration(seconds: 2),
       action: action,
     ));
   }
