@@ -48,28 +48,32 @@ abstract class BaseApp extends StatelessWidget
                 : [const Locale('en', 'US')],
             localeResolutionCallback: localeResolutionCallback,
             onGenerateRoute: (settings) {
-              return PageRouteBuilder(
-                  settings: settings,
-                  pageBuilder: (BuildContext context,
-                          Animation<double> animation,
-                          Animation<double> secondaryAnimation) =>
-                      getScreen(settings),
-                  transitionDuration: const Duration(milliseconds: 300),
-                  transitionsBuilder: (BuildContext context,
-                      Animation<double> animation,
-                      Animation<double> secondaryAnimation,
-                      Widget child) {
-                    var begin = Offset(1.0, 0.0);
-                    var end = Offset.zero;
-                    var curve = Curves.ease;
+              return MaterialPageRoute(
+                settings: settings,
+                builder: (context) => getScreen(settings),
+              );
+              // return PageRouteBuilder(
+              //     settings: settings,
+              //     pageBuilder: (BuildContext context,
+              //             Animation<double> animation,
+              //             Animation<double> secondaryAnimation) =>
+              //         getScreen(settings),
+              //     transitionDuration: const Duration(milliseconds: 300),
+              //     transitionsBuilder: (BuildContext context,
+              //         Animation<double> animation,
+              //         Animation<double> secondaryAnimation,
+              //         Widget child) {
+              //       var begin = Offset(1.0, 0.0);
+              //       var end = Offset.zero;
+              //       var curve = Curves.ease;
 
-                    var tween = Tween(begin: begin, end: end)
-                        .chain(CurveTween(curve: curve));
-                    return SlideTransition(
-                      position: animation.drive(tween),
-                      child: child,
-                    );
-                  });
+              //       var tween = Tween(begin: begin, end: end)
+              //           .chain(CurveTween(curve: curve));
+              //       return SlideTransition(
+              //         position: animation.drive(tween),
+              //         child: child,
+              //       );
+              //     });
             },
           );
         },
