@@ -48,7 +48,7 @@ abstract class BaseApp extends StatelessWidget
                 : [const Locale('en', 'US')],
             localeResolutionCallback: localeResolutionCallback,
             onGenerateRoute: (settings) {
-              return MaterialPageRoute(
+              return CustomMaterialPageRoute(
                 settings: settings,
                 builder: (context) => getScreen(settings),
               );
@@ -80,4 +80,23 @@ abstract class BaseApp extends StatelessWidget
       ),
     );
   }
+}
+
+class CustomMaterialPageRoute extends MaterialPageRoute {
+  @protected
+  bool get hasScopedWillPopCallback {
+    return false;
+  }
+
+  CustomMaterialPageRoute({
+    @required WidgetBuilder builder,
+    RouteSettings settings,
+    bool maintainState = true,
+    bool fullscreenDialog = false,
+  }) : super(
+          builder: builder,
+          settings: settings,
+          maintainState: maintainState,
+          fullscreenDialog: fullscreenDialog,
+        );
 }
