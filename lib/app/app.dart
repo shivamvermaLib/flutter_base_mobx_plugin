@@ -51,6 +51,7 @@ abstract class BaseApp extends StatelessWidget
               return CustomMaterialPageRoute(
                 settings: settings,
                 builder: (context) => getScreen(settings),
+                initialScreen: initialScreen,
               );
               // return PageRouteBuilder(
               //     settings: settings,
@@ -88,9 +89,24 @@ class CustomMaterialPageRoute extends MaterialPageRoute {
     return false;
   }
 
+  final String initialScreen;
+
+  @override
+  Duration get transitionDuration => const Duration(milliseconds: 500);
+
+  @override
+  Widget buildTransitions(BuildContext context, Animation animation,
+      Animation secondaryAnimation, Widget child) {
+    if (settings.name == initialScreen) {
+      return child;
+    }
+    return FadeTransition(opacity: animation, child: child);
+  }
+
   CustomMaterialPageRoute({
     @required WidgetBuilder builder,
     RouteSettings settings,
+    @required this.initialScreen,
     bool maintainState = true,
     bool fullscreenDialog = false,
   }) : super(
